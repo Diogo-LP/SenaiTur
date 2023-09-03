@@ -19,7 +19,7 @@
                 <a href="pacotes.html">Pacotes</a>
                 <a href="blog.html">Blog</a>
                 <a href="contato.html">Contato</a>
-                <a href="reservas.html"><div class="circle"><img src="assets/img/bag.png" alt=""></div></a>
+                <a href="reservas.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
             </div>
         </div>
     </header>
@@ -29,7 +29,7 @@
             <div class="passagens">
                 <div class="top">
                     <input type="checkbox" id="volta" checked="true" name="volta">
-                    <div class="title"><h2>PASSAGENS AÉREAS</h2><img src="assets/img/airicon.svg" alt=""></div>
+                    <div class="title"><h2>PASSAGENS AÉREAS</h2><img src="assets/img/icons/airicon.svg" alt=""></div>
                     <label for="volta"><div class="chek"><div id="idavolta">Ida e Volta</div><div id="ida">Somente Ida</div></div></label>
                 </div>
                 <div class="bot"></div>
@@ -85,11 +85,11 @@
             </div>
             <h2 class="siga">Siga-nos! Nas redes sociais</h2>
             <div class="redes_sociais">
-                <a href=""><img class="rede" src="assets/img/twiter.png" alt=""></a>
-                <a href=""><img class="rede" src="assets/img/instagram.png" alt=""></a>
-                <a href=""><img class="rede" src="assets/img/youtube.png" alt=""></a>
-                <a href=""><img class="rede" src="assets/img/facebook.png" alt=""></a>
-                <a href=""><img class="rede" src="assets/img/pinterest.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/twiter.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/instagram.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/youtube.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/facebook.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/pinterest.png" alt=""></a>
             </div>
         </div>
     </footer>
@@ -101,7 +101,7 @@
 
     let i = 0
     setInterval(() => {
-        slide.style.backgroundImage = `url(assets/img/${i}.png)`
+        slide.style.backgroundImage = `url(assets/img/slide/${i}.png)`
         i++
         i > 7 ? i=0 : i=i
     }, 5000);
@@ -125,7 +125,7 @@
 
     for(let quant=0; quant<=5; quant++){
         document.querySelector('.cidades-desconto').innerHTML += `         
-                <div style="background-image: url(assets/img/cidade${quant}.png);" class="cidade">
+                <div style="background-image: url(assets/img/desconto/cidade${quant}.png);" class="cidade">
                     <div class="details">
                         <div class="detail-box">
                             <h3>Rio de Janeiro</h3>
