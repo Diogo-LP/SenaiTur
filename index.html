@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/3143d98b09.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <title>SenaiTur</title>
+</head>
+<body>
+
+    <header>
+        <div class="menu">
+            <div class="logo"><img src="assets/img/logo.png" alt=""></div>
+            <div class="pages">
+                <a href="sobre.html">Sobre</a>
+                <a href="passagens.html">Passagens</a>
+                <a href="pacotes.html">Pacotes</a>
+                <a href="blog.html">Blog</a>
+                <a href="contato.html">Contato</a>
+                <a href="reservas.html"><div class="circle"><img src="assets/img/bag.png" alt=""></div></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="slide">
+            <div class="passagens">
+                <div class="top">
+                    <input type="checkbox" id="volta" checked="true" name="volta">
+                    <div class="title"><h2>PASSAGENS AÉREAS</h2><img src="assets/img/airicon.svg" alt=""></div>
+                    <label for="volta"><div class="chek"><div id="idavolta">Ida e Volta</div><div id="ida">Somente Ida</div></div></label>
+                </div>
+                <div class="bot"></div>
+            </div>
+        </div>
+
+        <section class="descontos">
+            <h2>PASSAGENS COM DESCONTO</h2>
+            <div class="cidades-desconto"></div>
+
+        <section class="sobre">
+            <div>
+                <h2>Quem Somos</h2>
+                <p></p>
+                <button>Saiba Mais</button>
+            </div>
+            <div>
+                <h2>Passagens</h2>
+                <p></p>
+                <button>Saiba Mais</button>
+            </div>
+            <div>
+                <h2>NOSSO BLOG</h2>
+                <p></p>
+                <button>Saiba Mais</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="ft_bkgnd">
+            <div class="ft_logo"><img width="150px" src="assets/img/logo.png" alt=""></div>
+            <div class="text_tabs">
+                <div class="tabs">
+                    <a class="text_tab" href="">Minhas viagens</a>
+                    <a class="text_tab" href="">Passagens internacionais</a>
+                    <a class="text_tab" href="">Passagens nacionais</a>
+                    <a class="text_tab" href="">Passagens com desconto</a>
+                </div>
+                <div class="tabs">
+                    <a class="text_tab" href="">Passagens baratas</a>
+                    <a class="text_tab" href="">Passagens promocionais</a>
+                    <a class="text_tab" href="">Pacotes</a>
+                    <a class="text_tab" href="">Pacotes com desconto</a>
+                </div>
+                <div class="tabs">
+                    <a class="text_tab" href="">Sobre</a>
+                    <a class="text_tab" href="">Nosso blog</a>
+                    <a class="text_tab" href="">FAQs</a>
+                    <a class="text_tab" href="">Contato</a>
+                </div>
+            </div>
+            <h2 class="siga">Siga-nos! Nas redes sociais</h2>
+            <div class="redes_sociais">
+                <a href=""><img class="rede" src="assets/img/twiter.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/instagram.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/youtube.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/facebook.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/pinterest.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script>
+    var slide = document.getElementById('slide')
+    var volta = document.getElementById("volta")
+
+    let i = 0
+    setInterval(() => {
+        slide.style.backgroundImage = `url(assets/img/${i}.png)`
+        i++
+        i > 7 ? i=0 : i=i
+    }, 5000);
+
+    function checkVolta(){
+        var ida = document.getElementById("ida")
+        var idavolta = document.getElementById('idavolta')
+
+        if(volta.checked){
+            ida.classList.remove('divchecked')
+            idavolta.classList.add('divchecked')
+        }else{
+            ida.classList.add('divchecked')
+            idavolta.classList.remove('divchecked')
+        }
+    }
+    checkVolta()
+
+    volta.addEventListener('click', checkVolta)
+
+
+    for(let quant=0; quant<=5; quant++){
+        document.querySelector('.cidades-desconto').innerHTML += `         
+                <div style="background-image: url(assets/img/cidade${quant}.png);" class="cidade">
+                    <div class="details">
+                        <div class="detail-box">
+                            <h3>Rio de Janeiro</h3>
+                            <h3>R$350,00</h3>
+                            <button class="vermais">Ver Mais</button>
+                        </div>
+                    </div>
+                </div>
+           `
+    }
+</script>
+</html>
