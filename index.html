@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/3143d98b09.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <script src="assets/js/passagens.js"></script>
     <title>SenaiTur</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
             <div class="pages">
                 <a href="sobre.html">Sobre</a>
                 <a href="passagens.html">Passagens</a>
-                <a href="pacotes.html">Pacotes</a>
+                <a href="avaliacao.html">Avaliações</a>
                 <a href="blog.html">Blog</a>
                 <a href="contato.html">Contato</a>
                 <a href="reservas.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
@@ -29,33 +30,73 @@
             <div class="passagens">
                 <div class="top">
                     <input type="checkbox" id="volta" checked="true" name="volta">
-                    <div class="title"><h2>PASSAGENS AÉREAS</h2><img src="assets/img/icons/airicon.svg" alt=""></div>
+                    <div class="title"><h2 class="tl">PASSAGENS AÉREAS</h2><img src="assets/img/icons/airicon.svg" alt=""></div>
                     <label for="volta"><div class="chek"><div id="idavolta">Ida e Volta</div><div id="ida">Somente Ida</div></div></label>
                 </div>
-                <div class="bot"></div>
+                <div class="bot">
+                    <div class="input">
+                        <label for="origem">ORIGEM</label>
+                        <select name="" id="origem">
+                            <option value="all">Todos</option>
+                        </select>
+                    </div>
+                    <div class="input">
+                        <label for="destino">DESTINO</label>
+                        <select name="" id="destino">
+                            <option value="all">Todos</option>
+                        </select>
+                    </div>
+                    <div class="datas">
+                        <div class="input">
+                            <label for="data-ida">Ida</label>                        
+                            <input type="date" name="" id="data-ida">
+                        </div>
+                        <div class="input">
+                            <label for="data-volta">Volta</label>
+                            <input type="date" name="" id="data-volta">                       
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="passageiros">Passageiros</label>
+                        <select style="text-align: center;" name="" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>                        
+                    </div>
+                    <button class="orange" id="buscar">BUSCAR</button>
+                </div>
             </div>
         </div>
 
         <section class="descontos">
-            <div style="display: flex; align-self: start; margin-right: auto; "><h2>PASSAGENS COM DESCONTO</h2><div style="margin-top: 10px;"><img width="50px" src="assets/img/icons/tickets.png" alt=""></div></div>
+            <div style="display: flex; align-self: start; margin-right: auto; "><h2 class="tl">PASSAGENS COM DESCONTO</h2><div style="margin-top: 10px;"><img width="50px" src="assets/img/icons/tickets.png" alt=""></div></div>
             <div class="cidades-desconto"></div>
         </section>
 
         <section class="sobre">
-            <div>
-                <h2>Quem Somos</h2>
-                <p></p>
-                <button>Saiba Mais</button>
-            </div>
-            <div>
-                <h2>Passagens</h2>
-                <p></p>
-                <button>Saiba Mais</button>
-            </div>
-            <div>
-                <h2>NOSSO BLOG</h2>
-                <p></p>
-                <button>Saiba Mais</button>
+                <div class="box">
+                <div>
+                    <h2>Quem Somos</h2>
+                    <p>Somos uma empresa apaixonada por viagens e aventuras. Bem-vindo à Senai Tur, onde transformamos seus sonhos de explorar o mundo em realidade...</p>
+                    <button class="orange">Saiba Mais</button>
+                </div>
+                <div>
+                    <h2>Passagens</h2>
+                    <p>Somos uma empresa apaixonada por viagens e aventuras. Bem-vindo à Senai Tur, onde transformamos seus sonhos de explorar o mundo em realidade...</p>
+                    <button class="orange">Saiba Mais</button>
+                </div>
+                <div>
+                    <h2>NOSSO BLOG</h2>
+                    <p>Somos uma empresa apaixonada por viagens e aventuras. Bem-vindo à Senai Tur, onde transformamos seus sonhos de explorar o mundo em realidade...</p>
+                    <button class="orange">Saiba Mais</button>
+                </div>
             </div>
         </section>
 
@@ -99,6 +140,42 @@
 <script>
     var slide = document.getElementById('slide')
     var volta = document.getElementById("volta")
+    var buscar = document.getElementById('buscar')
+
+    var passagens = JSON.parse(jsonpassagens)
+    var origem = document.getElementById('origem')
+    var destino = document.getElementById('destino')
+    var table = document.getElementById('passTable')
+
+    for(let cidade in passagens.cidades){
+        let opt = document.createElement('option')
+        opt.value = passagens.cidades[cidade].nome
+        opt.textContent = passagens.cidades[cidade].nome
+        origem.append(opt)
+    }
+    origem.addEventListener('change', ()=>{
+        destino.innerHTML = '<option selected value="all">Todos</option>'
+        var destinos = []
+        
+        if(origem.value != 'all'){
+            for(let cidade in passagens.cidades){   
+                if(passagens.cidades[cidade].nome == origem.value){
+                    for(let i=0; i<passagens.cidades[cidade].viagens.length; i++){
+                        destinos.push(passagens.cidades[cidade].viagens[i].destino)
+                    }
+                }
+            }
+        }
+        var destinos = destinos.filter((este, i) => destinos.indexOf(este) === i);
+        destinos = destinos.sort()
+        for(ci of destinos){
+            let opt = document.createElement('option')
+            opt.value = ci
+            opt.textContent = ci
+            destino.append(opt)
+        }
+    })
+
 
     let i = 0
     setInterval(() => {
@@ -112,9 +189,11 @@
         var idavolta = document.getElementById('idavolta')
 
         if(volta.checked){
+            document.querySelector('.datas div:nth-child(2)').style.opacity = '1'
             ida.classList.remove('divchecked')
             idavolta.classList.add('divchecked')
         }else{
+            document.querySelector('.datas div:nth-child(2)').style.opacity = '0'
             ida.classList.add('divchecked')
             idavolta.classList.remove('divchecked')
         }

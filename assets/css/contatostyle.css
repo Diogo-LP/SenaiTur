@@ -111,23 +111,7 @@ form > label {
     margin-top: 13px;
 }
 
-input[type=submit] {
-    margin-top: 15px;
-    height: 40px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    background-color: #FF7903;
-    box-shadow: 0px 0px 15px #FF7903;
-    transition: all 0.7s;
-}
-input[type=submit]:hover {
-    scale: 1.05;
-    cursor: pointer;
-    background-color: #ff861d;
-}
+
 .nomesobrenome{
     display: flex;
     justify-content: space-between;
