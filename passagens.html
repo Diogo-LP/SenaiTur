@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/3143d98b09.js" crossorigin="anonymous"></script>
     <script src="assets/js/passagens.js"></script>
+    <link rel="stylesheet" href="assets/css/passagens.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Passagens</title>
 </head>
@@ -24,17 +25,20 @@
             </div>
         </div>
     </header>
-
+    <main>
     <div class="form">
+        ORIGEM
         <select  name="" id="origem">
             <option selected value="all">Todos</option>
         </select>
+        DESTINO
         <select name="" id="destino">
             <option selected value="all">Todos</option>
         </select>
         <button style="padding: 10px 20px;" class="orange" id="go">BUSCAR</button>
     </div>
-    <div class="table_area">
+</main>
+    <div style="margin-bottom: 10rem;" class="table_area">
         <div class="backgnd_table">
             <table id="passTable" cellspacing="0" cellpadding="0">
                 <tr class="titles_table">
@@ -50,6 +54,39 @@
     </div>
     </div>
     
+    <footer>
+        <div class="ft_bkgnd">
+            <div class="ft_logo"><img width="150px" src="assets/img/logo.png" alt=""></div>
+            <div class="text_tabs">
+                <div class="tabs">
+                    <a class="text_tab" href="">Minhas viagens</a>
+                    <a class="text_tab" href="">Passagens internacionais</a>
+                    <a class="text_tab" href="">Passagens nacionais</a>
+                    <a class="text_tab" href="">Passagens com desconto</a>
+                </div>
+                <div class="tabs">
+                    <a class="text_tab" href="">Passagens baratas</a>
+                    <a class="text_tab" href="">Passagens promocionais</a>
+                    <a class="text_tab" href="">Pacotes</a>
+                    <a class="text_tab" href="">Pacotes com desconto</a>
+                </div>
+                <div class="tabs">
+                    <a class="text_tab" href="">Sobre</a>
+                    <a class="text_tab" href="">Nosso blog</a>
+                    <a class="text_tab" href="">FAQs</a>
+                    <a class="text_tab" href="">Contato</a>
+                </div>
+            </div>
+            <h2 class="siga">Siga-nos! Nas redes sociais</h2>
+            <div class="redes_sociais">
+                <a href=""><img class="rede" src="assets/img/socialmedias/twiter.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/instagram.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/youtube.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/facebook.png" alt=""></a>
+                <a href=""><img class="rede" src="assets/img/socialmedias/pinterest.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
 </body>
 <script>
     var passagens = JSON.parse(jsonpassagens)

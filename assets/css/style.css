@@ -22,7 +22,7 @@
     float: left;
     width: 80px;
 }
-a{
+.menu a{
     color: #FF7903;
     font-weight: 600;
     font-size: 1.2rem;
@@ -162,6 +162,7 @@ select{
 select, input{
     height: 3rem;
     padding: .25em;
+    padding-left: 1em;
     border: 3px solid #d9d9d9;
     font-weight: bold;
     border-radius: 17px;
@@ -339,7 +340,10 @@ tr:nth-child(2){
     font-size: 1.5em;
     color: #FF7903;
 }
-
+.box a{
+    color: #fff;
+    text-decoration: none;
+}
 .orange {
     margin-top: 15px;
     height: 40px;
