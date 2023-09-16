@@ -6,6 +6,7 @@
     <title>Minhas Viagens</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/minhasviagensstyle.css">
+    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/3143d98b09.js" crossorigin="anonymous"></script>
     <script src="assets/js/minhasviagens.js" defer></script>
 </head>
@@ -33,12 +34,15 @@
                 <div class="riscob"></div>
             </div>  
         </div>
+        <input type="file" name="" id="file">
         <div class="wht_cont">
             <div class="center_grid">
                 <div class="grid_1">
                     <div class="infos">
                         <div class="user_cont">
-                             <div class="dot"></div>
+                             <div class="dot">
+                                <div class="upload"><i class="fa-solid fa-camera"></i></div>
+                             </div>
                              <span class="name">Nome Sobrenome</span>
                              <span class="viagens_count">0 Viagens</span>
                         </div>
@@ -94,6 +98,36 @@
 var passagens = JSON.parse(jsonpassagens)
 var arrayreservas = localStorage.getItem("reservas")
 const gridreservas = document.querySelector('.gd_viagens-itens')
+var upload = document.querySelector('.upload')
+var file = document.getElementById('file')
+const leitorDeArquivos = new FileReader()
+var dot = document.querySelector(".dot")
+
+function leAtualiza(){
+    let imagemEnviada = file.files[0];
+    leitorDeArquivos.readAsDataURL(imagemEnviada);
+    leitorDeArquivos.addEventListener('loadend', function(load){
+            
+            console.log(load.target.result);
+            dot.setAttribute('style', `background-image: url(${load.target.result});`)
+            localStorage.setItem("imgphoto", load.target.result) 
+        })
+}
+
+if(localStorage.getItem("imgphoto") != null){
+    dot.setAttribute('style', `background-image: url(${localStorage.getItem("imgphoto")});`)
+}
+else{
+    dot.setAttribute('style', `background-image: url(assets/img/defautphoto.webp);`)
+}
+
+upload.addEventListener('click', ()=>{
+    file.click()
+    })
+
+    file.addEventListener('change', ()=>{
+        leAtualiza()
+    })
 
 for(let i in passagens.cidades)
 {
