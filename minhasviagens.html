@@ -49,64 +49,8 @@
                         <span>Viagens</span>
                         <div class="risco"></div>
                         <div class="gd_viagens-itens">
-                            <div class="gd_viagens-item">
-                                <div class="fill">
-                                    <div class="city_img"></div>
-                                    <div class="gd_viagens_info">
-                                        <div class="separa_cidest">
-                                            <span class="inf_cidade">Fernando de Noronha</span>
-                                            <span class="estado">Pernambuco</span>
-                                        </div>
-                                        <div class="separa_idavolta">
-                                            <span class="ida">Ida: 24/10/2023 17:30</span>
-                                            <span class="volta">Volta: 30/10/2023 14:00</span>
-                                        </div>
-                                        <span class="voo_dur"><i class="fa-regular fa-clock"></i>   Duração voo: 12hr </span>
-                                        <span class="preco">R$650</span>
-                                    </div>
-                                </div>
-                                <div class="extra">
-                                    <span class="classif">Classifique a viagem: </span>
-                                    <div class="stars">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <span class="count_star"></span>
-                                </div>
-                            </div>
-                            <div class="gd_viagens-item">
-                                <div class="fill">
-                                    <div class="city_img"></div>
-                                    <div class="gd_viagens_info">
-                                        <div class="separa_cidest">
-                                            <span class="inf_cidade">Fernando de Noronha</span>
-                                            <span class="estado">Pernambuco</span>
-                                        </div>
-                                        <div class="separa_idavolta">
-                                            <span class="ida">Ida: 24/10/2023 17:30</span>
-                                            <span class="volta">Volta: 30/10/2023 14:00</span>
-                                        </div>
-                                        <span class="voo_dur"><i class="fa-regular fa-clock"></i>   Duração voo: 12hr </span>
-                                        <span class="preco">R$650</span>
-                                    </div>
-                                </div>
-                                <div class="extra">
-                                    <span class="classif">Classifique a viagem: </span>
-                                    <div class="stars">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-                                    <span class="count_star"></span>
-                                </div>
-                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </main>
@@ -144,4 +88,48 @@
         </div>
     </footer>
 </body>
+<script src="assets/js/passagens.js"></script>
+<script>
+var passagens = JSON.parse(jsonpassagens)
+var arrayreservas = localStorage.getItem("reservas")
+const gridreservas = document.querySelector('.gd_viagens-itens')
+
+for(let i in passagens.cidades)
+{
+    for(let j in passagens.cidades[i].viagens)
+    {
+        if(arrayreservas.indexOf(passagens.cidades[i].viagens[j].id) != -1)
+        {
+            gridreservas.innerHTML += `<div class="gd_viagens-item">
+                                <div class="fill">
+                                    <div style="background-image: url(assets/img/cidades/${passagens.cidades[i].viagens[j].img});" class="city_img"></div>
+                                    <div class="gd_viagens_info">
+                                        <div class="separa_cidest">
+                                            <span class="inf_cidade">${passagens.cidades[i].viagens[j].destino}</span>
+                                            <span class="estado">${passagens.cidades[i].viagens[j].estado}</span>
+                                        </div>
+                                        <div class="separa_idavolta">
+                                            <span class="ida">Ida: ${passagens.cidades[i].viagens[j].ida}</span>
+                                            <span class="volta">Volta: ${passagens.cidades[i].viagens[j].volta}</span>
+                                        </div>
+                                        <span class="voo_dur"><i class="fa-regular fa-clock"></i>   Duração voo: 12hr </span>
+                                        <span class="preco">R$${passagens.cidades[i].viagens[j]["preço"]}</span>
+                                    </div>
+                                </div>
+                                <div class="extra">
+                                    <span class="classif">Classifique a viagem: </span>
+                                    <div class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="count_star"></span>
+                                </div>
+                            </div>`
+        }
+    }
+}
+</script>
 </html>
