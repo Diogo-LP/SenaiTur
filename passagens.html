@@ -89,8 +89,10 @@
     </footer>
 </body>
 <script>
-
-    
+    if(JSON.parse(localStorage.getItem('reservas')) == null || JSON.parse(localStorage.getItem('reservas').length == 0)){
+        var reservas = []
+        localStorage.setItem("reservas", JSON.stringify(reservas));
+    }
 
     var passagens = JSON.parse(jsonpassagens)
     var origem = document.getElementById('origem')
