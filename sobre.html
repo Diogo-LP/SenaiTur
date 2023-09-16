@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre o Senai Thur</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/contatostyle.css">
 </head>
 <style>
     section{
+        text-align: justify;
         border-radius: 20px;
         padding: 2rem;
         box-shadow: 0px 0px 25px #00000041;
@@ -16,8 +18,14 @@
     h1, h2, h3{
         color: #FF7903;
     }
+
+    #slide{
+        max-width: calc(100% - 10rem);
+        height: 60vh;
+    }
 </style>
 <body>
+
     <header>
         <div class="menu">
             <div class="logo"><img src="assets/img/logo.png" alt=""></div>
@@ -31,7 +39,9 @@
             </div>
         </div>
     </header>
+    <section id="slide">
 
+    </section>
     <div class="container">
         <section>
             <h2>Quem Somos</h2>
@@ -105,4 +115,14 @@
 
     </div>
 </body>
+<script>
+    var slide = document.getElementById('slide')
+    let i = 0
+setInterval(() => {
+    slide.style.backgroundImage = `url(assets/img/slide/${i}.png)`
+    i++
+    i > 7 ? i=0 : i=i
+}, 3000);
+
+</script>
 </html>
