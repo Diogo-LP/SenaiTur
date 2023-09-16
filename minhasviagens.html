@@ -43,8 +43,9 @@
                              <div class="dot">
                                 <div class="upload"><i class="fa-solid fa-camera"></i></div>
                              </div>
-                             <input class="inputname" type="text">
-                             <span class="name">Nome Sobrenome <i class="fa-solid fa-pencil btn_edit"></i></span>
+                             <input class="inputname" type="text"><button class="confirm_name">OK</button>
+                             <span class="name">Nome Sobrenome</span>
+                             <i class="fa-solid fa-pencil btn_edit"></i>
                              <span class="viagens_count">0 Viagens</span>
                         </div>
                         <div class="info_cont">
@@ -108,6 +109,10 @@ var upload = document.querySelector('.upload')
 var file = document.getElementById('file')
 const leitorDeArquivos = new FileReader()
 var dot = document.querySelector(".dot")
+var btnEdit = document.querySelector(".btn_edit")
+var inputName = document.querySelector(".inputname")
+var spanName = document.querySelector(".name")
+var btn_confirm = document.querySelector(".confirm_name")
 
 function leAtualiza(){
     let imagemEnviada = file.files[0];
@@ -126,6 +131,29 @@ if(localStorage.getItem("imgphoto") != null){
 else{
     dot.setAttribute('style', `background-image: url(assets/img/defautphoto.webp);`)
 }
+
+if(localStorage.getItem("name") != null){
+    spanName.textContent = localStorage.getItem("name")
+}
+
+btnEdit.addEventListener("click", ()=> {
+    btnEdit.setAttribute('style', 'display: none')
+    spanName.setAttribute('style', 'display: none')
+    btn_confirm.setAttribute('style', `display: block;`)
+    inputName.setAttribute('style', `display: block;`)
+})
+
+btn_confirm.addEventListener("click", ()=> {
+    btnEdit.setAttribute('style', 'display: block;')
+    spanName.setAttribute('style', 'display: block')
+    inputName.setAttribute('style', 'display: none;')
+    btn_confirm.setAttribute('style', `display: none;`)
+    if(inputName.value != " "){
+        btnEdit.setAttribute('style', 'display: block;')
+        spanName.textContent = inputName.value
+        localStorage.setItem("name", inputName.value) 
+    }
+})
 
 upload.addEventListener('click', ()=>{
     file.click()

@@ -121,7 +121,7 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-image: url(../img/wallpaper_barco.jpg);
+    background-image: url(../img/defautphoto.webp);
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -246,7 +246,27 @@ main {
 }
 .inputname{
     display: none;
+    font-weight: 400 !important;
+    height: 7% !important;
 }
-.name i:hover .inputname{
-    display: block;
+.confirm_name{
+    display: none;
+    margin-top: 5px;
+    background-color: #FF7903;
+    box-shadow: 0 0 7px #ff790370;
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 12%;
+    height: 12%;
+    border-radius: 5px;
+}
+.confirm_name:hover{
+    cursor:pointer
+}
+.confirm_name:active{
+    scale: 0.9;
+}
+.btn_edit{
+    cursor: pointer;
 }
