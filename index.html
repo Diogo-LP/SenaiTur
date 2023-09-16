@@ -19,7 +19,7 @@
                 <a href="avaliacao.html">Avaliações</a>
                 <a href="blog.html">Blog</a>
                 <a href="contato.html">Contato</a>
-                <a href="reservas.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
+                <a href="minhasviagens.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
             </div>
         </div>
     </header>
@@ -69,7 +69,7 @@
                             <option value="9">9</option>
                         </select>                        
                     </div>
-                    <button class="orange" id="buscar">BUSCAR</button>
+                    <a href="passagens.html"><button class="orange" id="buscar">BUSCAR</button></a>
                 </div>
             </div>
         </div>
@@ -137,6 +137,11 @@
 
 </body>
 <script>
+    if(JSON.parse(localStorage.getItem('reservas')) == null || JSON.parse(localStorage.getItem('reservas').length == 0)){
+        var reservas = []
+        localStorage.setItem("reservas", JSON.stringify(reservas));
+    }
+
     var slide = document.getElementById('slide')
     var volta = document.getElementById("volta")
     var buscar = document.getElementById('buscar')

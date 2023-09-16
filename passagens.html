@@ -21,7 +21,7 @@
                 <a href="pacotes.html">Pacotes</a>
                 <a href="blog.html">Blog</a>
                 <a href="contato.html">Contato</a>
-                <a href="reservas.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
+                <a href="minhasviagens.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
             </div>
         </div>
     </header>
@@ -89,10 +89,15 @@
     </footer>
 </body>
 <script>
+
+    
+
     var passagens = JSON.parse(jsonpassagens)
     var origem = document.getElementById('origem')
     var destino = document.getElementById('destino')
     var table = document.getElementById('passTable')
+   
+
     for(let cidade in passagens.cidades){
         let opt = document.createElement('option')
         opt.value = passagens.cidades[cidade].nome
@@ -165,8 +170,24 @@
                }
             } 
         }
+        var btns = document.querySelectorAll('button.btn_preco')
+    
+
+    for(let i=0; i<btns.length; i++){
+        btns[i].addEventListener('click', ()=>{
+            var reservas = JSON.parse(localStorage.getItem('reservas'))
+            btns[i].textContent = 'RESERVADO'
+            var id = btns[i].getAttribute('data-id')
+            if(reservas.indexOf(id) == -1 ){
+                reservas.push(id)
+                reservas2 = JSON.stringify(reservas)
+                localStorage.setItem('reservas', reservas2)
+            }
+        })
+    }
     }
     function putInTable(passagem){
+        var reservas = JSON.parse(localStorage.getItem('reservas'))
         table.innerHTML += `
                 <tr>
                     <td>${passagem.origem}</td>
@@ -175,7 +196,7 @@
                     <td>${passagem.ida}</td>
                     <td>${passagem.volta == undefined ? "--" : passagem.volta}</td>
                     <td>${passagem["dias_de_viagem"]}</td>
-                    <td style="width: 100px;"><button data-id="${passagem.id}" class="btn_preco">R$${passagem["preço"]}</button></td>
+                    <td style="width: 100px;"><button data-id="${passagem.id}" class="btn_preco">${reservas.indexOf(passagem.id) != -1 ? 'RESERVADO' : 'R$' + passagem["preço"]}</button></td>
                 </tr>`
     }
 
