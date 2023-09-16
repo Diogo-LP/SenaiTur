@@ -18,7 +18,7 @@
                 <a href="index.html">Ínicio</a>
                 <a href="sobre.html">Sobre</a>
                 <a href="passagens.html">Passagens</a>
-                <a href="avaliacao.html">Avaliações</a>
+                <a href="avaliacoes.html">Avaliações</a>
                 <a href="blog.html">Blog</a>
                 <a href="contato.html">Contato</a>
                 <a href="reservas.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
@@ -95,6 +95,11 @@
 </body>
 <script src="assets/js/passagens.js"></script>
 <script>
+    if(JSON.parse(localStorage.getItem('reservas')) == null || JSON.parse(localStorage.getItem('reservas').length == 0)){
+        var reservas = []
+        localStorage.setItem("reservas", JSON.stringify(reservas));
+    }
+
 var passagens = JSON.parse(jsonpassagens)
 var arrayreservas = localStorage.getItem("reservas")
 const gridreservas = document.querySelector('.gd_viagens-itens')

@@ -9,6 +9,9 @@
     <script src="assets/js/passagens.js"></script>
     <title>SenaiTur</title>
 </head>
+<style>
+
+</style>
 <body>
     <header>
         <div class="menu">
@@ -16,7 +19,7 @@
             <div class="pages">
                 <a href="sobre.html">Sobre</a>
                 <a href="passagens.html">Passagens</a>
-                <a href="avaliacao.html">Avaliações</a>
+                <a href="avaliacoes.html">Avaliações</a>
                 <a href="blog.html">Blog</a>
                 <a href="contato.html">Contato</a>
                 <a href="minhasviagens.html"><div class="circle"><img src="assets/img/icons/bag.png" alt=""></div></a>
@@ -83,17 +86,17 @@
                 <div class="box">
                 <div>
                     <h2>Quem Somos</h2>
-                    <p>Somos uma empresa apaixonada por viagens e aventuras. Bem-vindo à Senai Tur, onde transformamos seus sonhos de explorar o mundo em realidade...</p>
+                    <p>Somos uma empresa apaixonada por viagens e aventuras. Bem-vindo à Senai Tur, onde transformamos seus sonhos de explorar o mundo em realidade, busque saber um pouco mais.</p>
                     <button class="orange"><a href="sobre.html">Saiba Mais</a></button>
                 </div>
                 <div>
                     <h2>Passagens</h2>
-                    <p>Somos uma empresa apaixonada por viagens e aventuras. Bem-vindo à Senai Tur, onde transformamos seus sonhos de explorar o mundo em realidade...</p>
+                    <p>Explore nosso vasto catálogo de passagens aéreas e encontre as melhores ofertas para os destinos mais deslumbrantes do mundo. Planeje sua próxima aventura com tarifas imbatíveis!</p>
                     <button class="orange"><a href="passagens.html">Saiba Mais</a></button>
                 </div>
                 <div>
                     <h2>NOSSO BLOG</h2>
-                    <p>Somos uma empresa apaixonada por viagens e aventuras. Bem-vindo à Senai Tur, onde transformamos seus sonhos de explorar o mundo em realidade...</p>
+                    <p>Leia nosso blog para descobrir dicas valiosas sobre como tornar sua viagem inesquecível. Estamos aqui para garantir que você tenha uma experiência de viagem perfeita.</p>
                     <button class="orange"><a href="blog.html">Saiba Mais</a></button>
                 </div>
             </div>
@@ -206,14 +209,15 @@
 
     volta.addEventListener('click', checkVolta)
 
-
-    for(let quant=0; quant<=5; quant++){
+    var descontos = ['Rio de Janeiro', 'São Paulo', 'Fernando de Noronha', 'Salvador', 'Foz do Iguaçu', 'Bonito']
+    var preco = [350, 300, 450, 250, 400, 300]
+    for(let quant=0; quant<descontos.length; quant++){
         document.querySelector('.cidades-desconto').innerHTML += `         
                 <div style="background-image: url(assets/img/desconto/cidade${quant}.png);" class="cidade">
                     <div class="details">
                         <div class="detail-box">
-                            <h3>Rio de Janeiro</h3>
-                            <h3>R$350,00</h3>
+                            <h3>${descontos[quant]}</h3>
+                            <h3>R$${preco[quant]},00</h3>
                             <button class="vermais">Ver Mais</button>
                         </div>
                     </div>
