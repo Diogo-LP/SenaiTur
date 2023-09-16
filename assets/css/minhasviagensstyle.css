@@ -244,3 +244,9 @@ main {
 #file{
     display: none;
 }
+.inputname{
+    display: none;
+}
+.name i:hover .inputname{
+    display: block;
+}
