@@ -1,4 +1,4 @@
-jsonpassagenS = `{
+jsonpassagens = `{
   "cidades": [
     {
       "nome": "São Paulo",
